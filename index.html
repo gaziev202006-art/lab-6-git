@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ИУ7-32Б</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.0/dist/cosmo/bootstrap.min.css">
+    <style>
+        table {
+            width: 100%; 
+            border-collapse: collapse; 
+            font-family: Arial, sans-serif; 
+        }
+
+        th, td {
+            border: 2px solid #2c3e50; 
+            padding: 12px 8px; 
+            text-align: center; 
+            vertical-align: middle; 
+            height: 60px; 
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        th {
+            background-color: #3498db; 
+            color: white; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            font-size: 16px; 
+        }
+
+        td:first-child, th:first-child {
+            background-color: #ecf0f1;
+            color: #2c3e50; 
+            font-weight: bold; 
+            width: 80px; 
+        }
+
+        .class-cell {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .class-cell:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .class-cell.selected {
+            background-color: #fff3cd !important;
+            border: 3px solid #ffc107 !important;
+            box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+        }
+        
+        .class-type {
+            font-size: 0.75em;
+            color: #6c757d;
+            display: block;
+            margin-top: 2px;
+        }
+        
+        .vuc {
+            background-color: #ffeaa7 !important;
+            font-style: italic;
+            font-weight: bold;
+        }
+        
+        .vuc.selected {
+            background-color: #fff3cd !important;
+            border: 3px solid #ffc107 !important;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>
+            <h1>ИУ7-32Б</h1>
+        </header>
+
+        <table border="1" id="scheduleTable">
+            <tr>
+                <th></th>
+                <th>Понедельник</th>
+                <th>Вторник</th>
+                <th>Среда</th>
+                <th>Четверг</th>
+                <th>Пятница</th>
+                <th>Суббота</th>
+            </tr>
+        </table>
+
+        <section class="my-4">
+            <div class="container">
+                <form id="schedule-form" class="p-4 border rounded shadow-sm bg-light">
+                    
+                    <div class="mb-3">
+                        <label for="subjectName" class="form-label">Название предмета:</label>
+                        <input type="text" class="form-control" id="subjectName" name="subjectName" 
+                               placeholder="Пусто — удалить">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">День недели:</label>
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="weekday" id="mon" value="0">
+                                <label class="form-check-label" for="mon">Понедельник</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="weekday" id="tue" value="1">
+                                <label class="form-check-label" for="tue">Вторник</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="weekday" id="wed" value="2">
+                                <label class="form-check-label" for="wed">Среда</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="weekday" id="thu" value="3">
+                                <label class="form-check-label" for="thu">Четверг</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="weekday" id="fri" value="4">
+                                <label class="form-check-label" for="fri">Пятница</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="weekday" id="sat" value="5">
+                                <label class="form-check-label" for="sat">Суббота</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Номер пары:</label>
+                        <div class="d-flex flex-wrap gap-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="classNumber" id="pair1" value="0">
+                                <label class="form-check-label" for="pair1">1 пара</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="classNumber" id="pair2" value="1">
+                                <label class="form-check-label" for="pair2">2 пара</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="classNumber" id="pair3" value="2">
+                                <label class="form-check-label" for="pair3">3 пара</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="classNumber" id="pair4" value="3">
+                                <label class="form-check-label" for="pair4">4 пара</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="classNumber" id="pair5" value="4">
+                                <label class="form-check-label" for="pair5">5 пара</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="classNumber" id="pair6" value="5">
+                                <label class="form-check-label" for="pair6">6 пара</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="classType" class="form-label">Тип пары:</label>
+                        <select class="form-select" id="classType" name="classType">
+                            <option value="lecture">Лекция</option>
+                            <option value="lab">Лабораторная работа</option>
+                            <option value="seminar">Семинар</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary me-2" style="background-color: #3fb618; border-color:#fff">Отправить изменение</button>
+                    <button type="button" id="resetBtn" class="btn btn-secondary">Сбросить всё</button>
+                </form>
+            </div>
+        </section>
+    </section>
+
+    <script src = "script.js" defer></script>
+</body>
+</html>
